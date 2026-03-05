@@ -35,8 +35,15 @@ namespace FlowchartSearchApp
 			// The input is trimmed to handle cases where the user only enters whitespace.
 			string input = Console.ReadLine()?.Trim();
 			string filePath = string.IsNullOrEmpty(input) ? "C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\AllCharts_20190517.txt" : input;
-			//string filePath = Console.ReadLine(@"C:\Users\BrianM\OneDrive - State of Oklahoma\Documents\skematics search\AllCharts_20190517.txt");
-
+			//string filePath = defaults to "C:\Users\BrianM\OneDrive - State of Oklahoma\Documents\skematics search\AllCharts_20190517.txt"
+			
+			Console.Write("Enter keyword to find (i.e. sunsystems): ");
+			// The input is trimmed to handle cases where the user only enters whitespace.
+			string keyword = Console.ReadLine()?.Trim();
+			string lookfor = string.IsNullOrEmpty(keyword) ? "sunsystems" : keyword;
+			//string lookfor = defaults to "sunsystems"
+			
+			
 			if (!File.Exists(filePath))
 			{
 				Console.WriteLine($"Error: File not found at {filePath}");
@@ -60,7 +67,7 @@ namespace FlowchartSearchApp
 
 						while ((line = reader.ReadLine()) != null && !line.Contains("</flowchart"))
 						{
-							if (line.Contains("sunsystem", StringComparison.OrdinalIgnoreCase))
+							if (line.Contains(lookfor, StringComparison.OrdinalIgnoreCase))
 							{
 								if (!foundFirstSS)
 								{
@@ -74,7 +81,7 @@ namespace FlowchartSearchApp
 				}
 			}
 
-			ExportToCsv(outputData, "Search_Results.csv");
+			ExportToCsv(outputData, "C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\Search_Results.csv");
 		}
 
 		private void ExportToCsv(List<string[]> data, string fileName)
