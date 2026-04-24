@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿//using System;
+//using System.Collections.Generic;
+using System.Diagnostics;
+//using System.IO;
+//using System.Linq;
 
 namespace FlowchartSearchApp
 {
@@ -51,6 +52,9 @@ namespace FlowchartSearchApp
 			}
 
 			List<string[]> outputData = new List<string[]>();
+			string header1 = "FlowChartName";
+			string header2 = "FlowChartData";
+			outputData.Add(new string[] { header1, header2 });
 			string currentFlowchartName = "";
 			bool foundFirstSS = false;
 
@@ -81,7 +85,7 @@ namespace FlowchartSearchApp
 				}
 			}
 
-			ExportToCsv(outputData, "C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\Search_Results.csv");
+			ExportToCsv(outputData, "C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\Search_Results.csv");
 		}
 
 		private void ExportToCsv(List<string[]> data, string fileName)
@@ -89,6 +93,14 @@ namespace FlowchartSearchApp
 			// Converts the list of arrays into comma-separated lines for Excel
 			var lines = data.Select(row => string.Join(",", row.Select(cell => $"\"{cell}\"")));
 			File.WriteAllLines(fileName, lines);
+
+			ProcessStartInfo startInfo = new ProcessStartInfo
+			{
+				FileName = fileName,
+				UseShellExecute = true
+			};
+			Process.Start(startInfo);
+
 			Console.WriteLine($"Results saved to: {Path.GetFullPath(fileName)}");
 		}
 	}
