@@ -32,16 +32,16 @@ namespace FlowchartSearchApp
 	{
 		public void ReadTextFileAndProcess()
 		{
-			Console.Write("Enter filename (Default: C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\AllCharts_20190517.txt): ");
+			Console.Write("Enter filename (Default: C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\AllCharts_20260514.txt): ");
 			// The input is trimmed to handle cases where the user only enters whitespace.
 			string input = Console.ReadLine()?.Trim();
-			string filePath = string.IsNullOrEmpty(input) ? "C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\AllCharts_20190517.txt" : input;
+			string filePath = string.IsNullOrEmpty(input) ? "C:\\Users\\BrianM\\OneDrive - State of Oklahoma\\Documents\\skematics search\\AllCharts_20260514.txt" : input;
 			//string filePath = defaults to "C:\Users\BrianM\OneDrive - State of Oklahoma\Documents\skematics search\AllCharts_20190517.txt"
 			
-			Console.Write("Enter keyword to find (i.e. sunsystems): ");
+			Console.Write("Enter keyword to find (i.e. sunsystem): ");
 			// The input is trimmed to handle cases where the user only enters whitespace.
 			string keyword = Console.ReadLine()?.Trim();
-			string lookfor = string.IsNullOrEmpty(keyword) ? "sunsystems" : keyword;
+			string lookfor = string.IsNullOrEmpty(keyword) ? "sunsystem" : keyword;
 			//string lookfor = defaults to "sunsystems"
 			
 			
